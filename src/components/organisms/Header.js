@@ -48,7 +48,10 @@ function Header() {
       <>
         <header className="c-header c-header__desktop hidden lg:flex fixed top-0 px-4 pr-2">
           <div className="c-header__top-content">
-            <a className="logo h-10 w-fit flex items-center" href="/">
+            <a
+              className="logo h-10 w-fit flex items-center"
+              href="javascript:void(0)"
+            >
               <img src={Logo} alt="Blockradar Logo" />
             </a>
 
@@ -60,7 +63,7 @@ function Header() {
                     onMouseOver={() => setActiveTab(i)}
                     onMouseLeave={() => setActiveTab(i)}
                     className="c-link"
-                    href={`void(0)`}
+                    href={`javascript:void(0)`}
                     key={item.name}
                   >
                     {item.name}
@@ -128,7 +131,10 @@ function Header() {
             >
               <div ref={ref} className="px-4 pl-5">
                 <div className="mobile-top flex items-center justify-between w-full">
-                  <a className="logo h-10 w-fit flex items-center" href="/">
+                  <a
+                    className="logo h-10 w-fit flex items-center"
+                    href="javascript:void(0)"
+                  >
                     <img src={Logo} alt="Blockradar Logo" />
                   </a>
 
@@ -193,7 +199,7 @@ function Header() {
                               }}
                               transition={{ type: "spring", bounce: 0 }}
                               className="c-link !pl-3 !h-10 !justify-between"
-                              href={"void(0)"}
+                              href={"javascript:void(0)"}
                             >
                               {item.name}
 
