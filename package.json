@@ -13,6 +13,7 @@
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "react-use-measure": "^2.1.1",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.80.4",
     "sass-resources-loader": "^2.2.5",
     "web-vitals": "^2.1.4"
@@ -43,5 +44,8 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.14"
+  },
+  "overrides": {
+    "resolve-url-loader": "^5.0.0"
   }
 }

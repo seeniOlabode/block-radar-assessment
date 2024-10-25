@@ -5,8 +5,8 @@ $desktop-header-margin-top: #{toRem(32)};
 $desktop-header-margin-left: #{toRem(32)};
 
 .c-header {
-  @apply border rounded-[var(--radius-lg)] backdrop-blur-lg z-50 fixed top-0 bg-[var(--gray-subtle)];
-  @apply border-solid border-[var(--divider)];
+  @apply border rounded-[var(--radius-lg)] backdrop-blur-lg z-50 top-0 bg-[var(--gray-subtle)] fixed;
+  @apply border-[var(--divider)] border-solid;
 
   &__desktop {
     @apply mx-auto;
@@ -58,8 +58,8 @@ $desktop-header-margin-left: #{toRem(32)};
 .c-header__bottom-content {
   width: toRem(325);
   height: toRem(254);
-  @apply backdrop-blur-lg bg-[var(--gray-subtle)];
-  @apply border border-solid border-[var(--divider)];
+  @apply bg-[var(--gray-subtle)] backdrop-blur-lg;
+  @apply border border-[var(--divider)] border-solid;
   border-radius: var(--radius-xl);
   position: absolute;
   top: calc($header-height + #{toRem(5)});
