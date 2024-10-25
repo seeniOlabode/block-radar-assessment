@@ -3,7 +3,7 @@
 
   @include respond-to(medium) {
     .animation-wrapper {
-      animation: marquee 5s infinite linear;
+      animation: marquee 10s infinite linear;
       width: fit-content;
 
       @keyframes marquee {

@@ -27,6 +27,26 @@ function Logos() {
             />
           );
         })}
+        {images.map((image) => {
+          return (
+            <img
+              src={image}
+              alt="Partner Logo"
+              className="h-7 lg:hidden"
+              key={`${image}-3`}
+            />
+          );
+        })}
+        {images.map((image) => {
+          return (
+            <img
+              src={image}
+              alt="Partner Logo"
+              className="h-7 lg:hidden"
+              key={`${image}-4`}
+            />
+          );
+        })}
       </div>
     </section>
   );
