@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./reset.css";
+@import "./variables.scss";
+@import "./typography.scss";
+@import "./layout.scss";
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* component imports */
+@import "./components/ActionButton.scss";
+@import "./components/Link.scss";

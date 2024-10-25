@@ -1,0 +1,51 @@
+.c-logos {
+  position: relative;
+
+  @include respond-to(medium) {
+    .animation-wrapper {
+      animation: marquee 5s infinite linear;
+      width: fit-content;
+
+      @keyframes marquee {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    &:hover {
+      .animation-wrapper {
+        animation-play-state: paused;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      inset: toRem(-15);
+      z-index: 10;
+      backdrop-filter: blur(toRem(2)) brightness(0);
+      background-color: hsla(0, 0%, 0%, 0.8);
+    }
+
+    &::before {
+      mask-image: linear-gradient(
+        to right,
+        black 0%,
+        transparent 20%,
+        transparent 100%
+      );
+    }
+
+    &::after {
+      mask-image: linear-gradient(
+        to left,
+        black 0%,
+        transparent 20%,
+        transparent 100%
+      );
+    }
+  }
+}

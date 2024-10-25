@@ -1,0 +1,73 @@
+/* shared header styles */
+
+$header-height: #{toRem(52)};
+$desktop-header-margin-top: #{toRem(32)};
+$desktop-header-margin-left: #{toRem(32)};
+
+.c-header {
+  @apply border rounded-[var(--radius-lg)] backdrop-blur-lg z-50 fixed top-0 bg-[var(--gray-subtle)];
+  @apply border-solid border-[var(--divider)];
+
+  &__desktop {
+    @apply mx-auto;
+    margin-top: $desktop-header-margin-top;
+    align-items: center;
+    max-width: toRem(1200);
+    left: var(--bleed-margin);
+    right: var(--bleed-margin);
+    height: $header-height;
+
+    .c-header__top-content {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: space-between;
+      align-items: center;
+      flex-basis: 100%;
+    }
+
+    .c-nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .button-container {
+      @apply flex items-center;
+    }
+  }
+
+  &__mobile {
+    @apply mx-auto;
+    width: 100vw;
+    --max-width-step-1: calc(100vw - var(--bleed-margin) - var(--bleed-margin));
+    max-width: clamp(0px, var(--max-width-step-1), 28rem);
+
+    .mobile-top {
+      height: $header-height;
+    }
+
+    .mobile-header-content {
+      height: fit-content;
+      width: 100%;
+
+      .c-button.mobile-secondary {
+      }
+    }
+  }
+}
+
+.c-header__bottom-content {
+  width: toRem(325);
+  height: toRem(254);
+  @apply backdrop-blur-lg bg-[var(--gray-subtle)];
+  @apply border border-solid border-[var(--divider)];
+  border-radius: var(--radius-xl);
+  position: absolute;
+  top: calc($header-height + #{toRem(5)});
+  display: none;
+}
+
+.mobile-backdrop {
+  @apply fixed inset-0 z-30;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+}

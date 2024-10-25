@@ -1,0 +1,39 @@
+.heading-1 {
+  @include font-height(40, 48);
+  font-weight: 800;
+  letter-spacing: -2%;
+  color: var(--text-primary);
+
+  @include respond-to(small) {
+    @include font-height(32, 32);
+  }
+
+  &::selection {
+    background-color: var(--text-marked);
+    color: var(--text-marked-foreground);
+  }
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin-top: toRem(20);
+  @include font-height(20, 28);
+  font-weight: 400;
+
+  @include respond-to(small) {
+    @include font-height(16, 24);
+    margin-top: toRem(12);
+  }
+
+  &::selection {
+    background-color: var(--text-marked);
+    color: var(--text-marked-foreground);
+  }
+}
+
+.body {
+  @include font-height(14, 21);
+  font-weight: 500;
+  letter-spacing: -2%;
+  color: var(--text-body);
+}

@@ -1,0 +1,30 @@
+// Function to convert pixels to rem
+@function toRem($px, $base: 16) {
+  @return #{$px / $base}rem;
+}
+
+@mixin font-height($size, $height) {
+  font-size: toRem(($size));
+  line-height: toRem(($height));
+}
+
+// Mixin for mobile-first breakpoints => created to match tailwind
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == small {
+    @media (max-width: 639px) {
+      @content;
+    }
+  } @else if $breakpoint == medium {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == large {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  } @else if $breakpoint == extra-large {
+    @media (max-width: 1800px) {
+      @content;
+    }
+  }
+}
