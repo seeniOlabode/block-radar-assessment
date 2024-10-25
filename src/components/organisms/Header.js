@@ -15,14 +15,30 @@ const menuItems = [
   { name: "Company", links: ["members"] },
 ];
 
+const LARGE_SIZE = 1024;
+
 function Header() {
   const [headerOpen, setHeaderOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(null);
 
   const [ref, bounds] = useMeasure();
+  let currentListener;
 
   function toggleHeaderOpen() {
-    setHeaderOpen((value) => !value);
+    setHeaderOpen((value) => {
+      if (!value) {
+        currentListener = window.addEventListener("resize", () => {
+          if (window.innerWidth >= 1024) {
+            setHeaderOpen(false);
+            currentListener?.();
+          }
+        });
+      } else {
+        currentListener?.();
+      }
+
+      return !value;
+    });
   }
 
   useLockBodyScroll(headerOpen);
@@ -44,7 +60,8 @@ function Header() {
                     onMouseOver={() => setActiveTab(i)}
                     onMouseLeave={() => setActiveTab(i)}
                     className="c-link"
-                    href={`/${item.name}`}
+                    href={`void(0)`}
+                    key={item.name}
                   >
                     {item.name}
 
@@ -176,7 +193,7 @@ function Header() {
                               }}
                               transition={{ type: "spring", bounce: 0 }}
                               className="c-link !pl-3 !h-10 !justify-between"
-                              href={item.name}
+                              href={"void(0)"}
                             >
                               {item.name}
 

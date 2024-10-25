@@ -12,12 +12,19 @@ function Logos() {
     <section className="c-logos mt-10 sm:mt-28 overflow-hidden flex justify-center">
       <div className="flex gap-16 animation-wrapper">
         {images.map((image) => {
-          return <img src={image} alt="Partner Logo" className="h-7" />;
+          return (
+            <img src={image} alt="Partner Logo" className="h-7" key={image} />
+          );
         })}
 
         {images.map((image) => {
           return (
-            <img src={image} alt="Partner Logo" className="h-7 lg:hidden" />
+            <img
+              src={image}
+              alt="Partner Logo"
+              className="h-7 lg:hidden"
+              key={`${image}-2`}
+            />
           );
         })}
       </div>
