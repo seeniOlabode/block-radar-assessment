@@ -28,7 +28,7 @@ function Header() {
     setHeaderOpen((value) => {
       if (!value) {
         currentListener = window.addEventListener("resize", () => {
-          if (window.innerWidth >= 1024) {
+          if (window.innerWidth >= LARGE_SIZE) {
             setHeaderOpen(false);
             currentListener?.();
           }
@@ -92,7 +92,9 @@ function Header() {
             </nav>
 
             <div className="button-container flex gap-4">
-              <button className="c-button smug secondary--bare">Log in</button>
+              <button className="c-button smug secondary--bare bare--hover">
+                Log in
+              </button>
               <button className="c-button primary--foreground smug c-button__foreground">
                 Sign up
                 <svg
@@ -143,7 +145,7 @@ function Header() {
                     className="c-header__button h-10 w-10 flex items-center justify-center translate-x-2 "
                   >
                     {headerOpen ? (
-                      <motion.svg
+                      <svg
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
@@ -160,9 +162,9 @@ function Header() {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
-                      </motion.svg>
+                      </svg>
                     ) : (
-                      <motion.svg
+                      <svg
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         width="24"
@@ -173,18 +175,18 @@ function Header() {
                       >
                         <path
                           d="M4.75 5.75H19.25M4.75 18.25H19.25M4.75 12H19.25"
-                          stroke="#858B8A"
+                          stroke="white"
                           stroke-width="1.5"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
-                      </motion.svg>
+                      </svg>
                     )}
                   </button>
                 </div>
 
                 {headerOpen ? (
-                  <div className="mobile-header-content mt-3 flex flex-col justify-between pb-6">
+                  <div className="mobile-header-content mt-3 flex flex-col justify-between pb-5">
                     <nav className="flex flex-col">
                       <AnimatePresence>
                         {menuItems.map((item, i, arrayLength) => {
@@ -226,16 +228,16 @@ function Header() {
                         })}
                       </AnimatePresence>
                     </nav>
-                    <div className="flex flex-col gap-1 mt-6">
+                    <div className="flex flex-col gap-1 mt-10">
                       <motion.button
                         initial={{ opacity: 0 }}
                         animate={{
                           opacity: 1,
                           duration: 0.2,
-                          transition: { delay: menuItems.length * 0.05 },
+                          transition: { delay: menuItems.length * 0.06 },
                         }}
                         transition={{ type: "spring", bounce: 0 }}
-                        className="c-button smug secondary--bare !h-10 mobile-secondary"
+                        className="c-button smug secondary--bare bare--hover !h-10 mobile-secondary"
                       >
                         Log in
                       </motion.button>
@@ -244,7 +246,7 @@ function Header() {
                         animate={{
                           opacity: 1,
                           duration: 0.2,
-                          transition: { delay: (menuItems.length + 1) * 0.05 },
+                          transition: { delay: (menuItems.length + 1) * 0.06 },
                         }}
                         transition={{ type: "spring", bounce: 0 }}
                         className="c-button primary--foreground smug c-button__foreground !h-10"

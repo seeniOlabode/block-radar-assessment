@@ -55,6 +55,30 @@
         background-color: var(--gray-subtle);
         filter: brightness(2);
       }
+
+      &.bare--hover {
+        position: relative;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          inset: 0;
+          background-color: var(--gray-subtle);
+          opacity: 0;
+          transform: scale(0.9);
+          transition: 100ms ease;
+          border-radius: var(--radius-md-lg);
+        }
+
+        &:hover {
+          background-color: transparent;
+          &::before {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
     }
   }
 
@@ -62,6 +86,11 @@
     height: toRem(36);
     border-radius: var(--radius-md-lg);
     @apply px-3;
+
+    @include respond-to(small) {
+      height: toRem(40);
+      @apply px-0;
+    }
   }
 
   &.large {
