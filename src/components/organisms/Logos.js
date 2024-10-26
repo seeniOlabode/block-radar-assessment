@@ -9,7 +9,7 @@ const images = [risevest, bloccpay, chainstack, nestcoin];
 
 function Logos() {
   return (
-    <section className="c-logos mt-10 sm:mt-28 overflow-hidden flex justify-center">
+    <section className="c-logos mt-10 sm:mt-28 overflow-hidden flex justify-start lg:justify-center">
       <div className="flex gap-16 animation-wrapper">
         {images.map((image) => {
           return (
@@ -24,26 +24,6 @@ function Logos() {
               alt="Partner Logo"
               className="h-7 lg:hidden"
               key={`${image}-2`}
-            />
-          );
-        })}
-        {images.map((image) => {
-          return (
-            <img
-              src={image}
-              alt="Partner Logo"
-              className="h-7 lg:hidden"
-              key={`${image}-3`}
-            />
-          );
-        })}
-        {images.map((image) => {
-          return (
-            <img
-              src={image}
-              alt="Partner Logo"
-              className="h-7 lg:hidden"
-              key={`${image}-4`}
             />
           );
         })}

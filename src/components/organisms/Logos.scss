@@ -5,6 +5,7 @@
     .animation-wrapper {
       animation: marquee 10s infinite linear;
       width: fit-content;
+      min-width: max-content;
 
       @keyframes marquee {
         to {

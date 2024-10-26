@@ -213,7 +213,7 @@ body {
         align-items: center;
         justify-content: center;
         opacity: 1;
-        animation: pulse 2s infinite alternate;
+        animation: pulse 1s infinite;
         position: absolute;
 
         &::before {
@@ -223,7 +223,7 @@ body {
           width: 6px;
           border-radius: 999px;
           background-color: hsla(94, 100%, 50%, 0.7);
-          animation: pulse-before 2s infinite alternate;
+          animation: pulse-before 1s infinite;
 
           @keyframes pulse-before {
             from {
@@ -231,7 +231,7 @@ body {
             }
 
             to {
-              transform: scale(0.5);
+              transform: scale(0.25);
             }
           }
         }
@@ -244,7 +244,7 @@ body {
 
           to {
             opacity: 0.4;
-            transform: scale(2);
+            transform: scale(4);
           }
         }
 
@@ -270,6 +270,11 @@ body {
         &:nth-child(5) {
           top: 40%;
           left: 15%;
+        }
+
+        &:nth-child(6) {
+          top: 30%;
+          right: 10%;
         }
       }
     }
