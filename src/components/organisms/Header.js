@@ -121,122 +121,127 @@ function Header() {
       </>
 
       <>
-        <div className="c-header__center-wrapper">
-          <AnimatePresence initial={false}>
-            <motion.header
-              animate={{ height: bounds.height ? bounds.height + 4 : null }}
-              transition={{
-                duration: 0.4,
-                ease: [0.215, 0.61, 0.355, 1],
-              }}
-              className="c-header c-header__mobile my-3 fixed top-0 left-0 right-0 lg:hidden overflow-hidden max-w-md mx-auto"
-            >
-              <div ref={ref} className="px-4 pl-5">
-                <div className="mobile-top flex items-center justify-between w-full">
-                  <a
-                    className="logo h-10 w-fit flex items-center"
-                    href="javascript:void(0)"
-                  >
-                    <img src={Logo} alt="Blockradar Logo" />
-                  </a>
+        <AnimatePresence>
+          <motion.header
+            animate={{
+              height: bounds.height && headerOpen ? bounds.height + 4 : 52,
+            }}
+            transition={{
+              duration: headerOpen ? 0.4 : 0.2,
+              ease: [0.215, 0.61, 0.355, 1],
+            }}
+            className="c-header c-header__mobile my-3 fixed top-0 left-0 right-0 lg:hidden overflow-hidden max-w-md mx-auto"
+          >
+            <div ref={ref} className="px-4 pl-5">
+              <div className="mobile-top flex items-center justify-between w-full">
+                <a
+                  className="logo h-10 w-fit flex items-center"
+                  href="javascript:void(0)"
+                >
+                  <img src={Logo} alt="Blockradar Logo" />
+                </a>
 
-                  <button
-                    onClick={toggleHeaderOpen}
-                    className="c-header__button h-10 w-10 flex items-center justify-center translate-x-2 "
+                <button
+                  onClick={toggleHeaderOpen}
+                  className="c-header__button h-10 w-10 flex items-center justify-center translate-x-2 "
+                >
+                  <svg
+                    style={{ display: headerOpen ? null : "none" }}
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    {headerOpen ? (
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                      >
-                        <path
-                          d="M18 6L6 18M6 6L18 18"
-                          stroke="white"
-                          stroke-opacity="0.3"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M4.75 5.75H19.25M4.75 18.25H19.25M4.75 12H19.25"
-                          stroke="white"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                    )}
-                  </button>
-                </div>
+                    <path
+                      d="M18 6L6 18M6 6L18 18"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <svg
+                    style={{ display: headerOpen ? "none" : null }}
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.75 5.75H19.25M4.75 18.25H19.25M4.75 12H19.25"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
 
+              <AnimatePresence>
                 {headerOpen ? (
                   <div className="mobile-header-content mt-3 flex flex-col justify-between pb-5">
                     <nav className="flex flex-col">
-                      <AnimatePresence>
-                        {menuItems.map((item, i, arrayLength) => {
-                          return (
-                            <motion.a
-                              key={item.name + i}
-                              initial={{ opacity: 0 }}
-                              animate={{
-                                opacity: 1,
-                                duration: 0.2,
-                                transition: { delay: i * 0.08 },
-                              }}
-                              transition={{ type: "spring", bounce: 0 }}
-                              className="c-link !pl-3 !h-10 !justify-between"
-                              href={"javascript:void(0)"}
-                            >
-                              {item.name}
+                      {menuItems.map((item, i, array) => {
+                        return (
+                          <motion.a
+                            key={item.name + i}
+                            initial={{ opacity: 0 }}
+                            animate={{
+                              opacity: 1,
+                              duration: 0.2,
+                              transition: { delay: i * 0.08 },
+                            }}
+                            exit={{
+                              opacity: 0,
+                              duration: 0.025,
+                            }}
+                            transition={{ type: "spring", bounce: 0 }}
+                            className="c-link !pl-3 !h-10 !justify-between"
+                            href={"javascript:void(0)"}
+                          >
+                            {item.name}
 
-                              {item.links.length ? (
-                                <svg
-                                  className="c-link__dropdown"
-                                  width="17"
-                                  height="16"
-                                  viewBox="0 0 17 16"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M6.30507 7.60875L8.03174 9.33542C8.29174 9.59542 8.71174 9.59542 8.97174 9.33542L10.6984 7.60875C11.1184 7.18875 10.8184 6.46875 10.2251 6.46875H6.77174C6.17841 6.46875 5.88507 7.18875 6.30507 7.60875Z"
-                                    fill="white"
-                                    fill-opacity="0.8"
-                                  />
-                                </svg>
-                              ) : null}
+                            {item.links.length ? (
+                              <svg
+                                className="c-link__dropdown"
+                                width="17"
+                                height="16"
+                                viewBox="0 0 17 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M6.30507 7.60875L8.03174 9.33542C8.29174 9.59542 8.71174 9.59542 8.97174 9.33542L10.6984 7.60875C11.1184 7.18875 10.8184 6.46875 10.2251 6.46875H6.77174C6.17841 6.46875 5.88507 7.18875 6.30507 7.60875Z"
+                                  fill="white"
+                                  fill-opacity="0.8"
+                                />
+                              </svg>
+                            ) : null}
 
-                              <span className="c-link__highlighter"></span>
-                            </motion.a>
-                          );
-                        })}
-                      </AnimatePresence>
+                            <span className="c-link__highlighter"></span>
+                          </motion.a>
+                        );
+                      })}
                     </nav>
                     <div className="flex flex-col gap-1 mt-10">
                       <motion.button
                         initial={{ opacity: 0 }}
                         animate={{
                           opacity: 1,
-                          duration: 0.2,
-                          transition: { delay: menuItems.length * 0.03 },
+                          transition: {
+                            type: "tween",
+                            duration: 0.45,
+                            delay: menuItems.length * 0.05,
+                            ease: [0.23, 1, 0.32, 1],
+                          },
                         }}
-                        transition={{ type: "spring", bounce: 0 }}
+                        exit={{
+                          opacity: 0,
+                          transition: { duration: 0.05 },
+                        }}
                         className="c-button smug secondary--bare bare--hover !h-10 mobile-secondary"
                       >
                         Log in
@@ -245,10 +250,18 @@ function Header() {
                         initial={{ opacity: 0 }}
                         animate={{
                           opacity: 1,
-                          duration: 0.2,
-                          transition: { delay: (menuItems.length + 1) * 0.03 },
+                          transition: {
+                            type: "tween",
+                            duration: 0.45,
+                            delay: menuItems.length * 0.06,
+                            ease: [0.23, 1, 0.32, 1],
+                          },
                         }}
-                        transition={{ type: "spring", bounce: 0 }}
+                        exit={{
+                          y: 20,
+                          opacity: 0,
+                          transition: { duration: 0.05 },
+                        }}
                         className="c-button primary--foreground smug c-button__foreground !h-10"
                       >
                         Sign up
@@ -271,10 +284,10 @@ function Header() {
                     </div>
                   </div>
                 ) : null}
-              </div>
-            </motion.header>
-          </AnimatePresence>
-        </div>
+              </AnimatePresence>
+            </div>
+          </motion.header>
+        </AnimatePresence>
 
         <AnimatePresence>
           {headerOpen ? (

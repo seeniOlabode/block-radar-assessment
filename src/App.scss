@@ -163,7 +163,7 @@ body {
         border: solid 1px var(--radar-color);
       }
 
-      @for $i from 1 through 4 {
+      @for $i from 1 through 6 {
         > div:nth-child(#{$i}) {
           transform: scale(#{1 - ($i * 0.1)}); // Adjust scaling based on index
           z-index: 3 - $i; // Optional: Ensure layering if needed

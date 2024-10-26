@@ -60,6 +60,8 @@ function App() {
                 <div></div>
                 <div></div>
                 <div></div>
+                <div></div>
+                <div></div>
               </div>
               <div className="plus">
                 <span></span>
