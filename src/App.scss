@@ -282,26 +282,26 @@ body {
 }
 
 .discrete-block {
-  animation: fade-in 0.5s forwards;
+  animation: fade-in 0.6.5s forwards;
   --stagger: 0.3s;
 
   &.heading-1 {
-    animation-delay: 0;
-    opacity: 0;
-  }
-
-  &.subtitle {
     animation-delay: calc(0.5 * var(--stagger));
     opacity: 0;
   }
 
+  &.subtitle {
+    animation-delay: calc(1 * var(--stagger));
+    opacity: 0;
+  }
+
   &.button-container {
-    animation-delay: calc(1.5 * var(--stagger));
+    animation-delay: calc(2 * var(--stagger));
     opacity: 0;
   }
 
   &.hero-img {
-    animation-delay: calc(2 * var(--stagger));
+    animation-delay: calc(3 * var(--stagger));
     opacity: 0;
   }
 }
