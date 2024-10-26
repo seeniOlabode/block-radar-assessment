@@ -197,7 +197,7 @@ function Header() {
                               animate={{
                                 opacity: 1,
                                 duration: 0.2,
-                                transition: { delay: i * 0.1 },
+                                transition: { delay: i * 0.08 },
                               }}
                               transition={{ type: "spring", bounce: 0 }}
                               className="c-link !pl-3 !h-10 !justify-between"
@@ -234,7 +234,7 @@ function Header() {
                         animate={{
                           opacity: 1,
                           duration: 0.2,
-                          transition: { delay: menuItems.length * 0.06 },
+                          transition: { delay: menuItems.length * 0.03 },
                         }}
                         transition={{ type: "spring", bounce: 0 }}
                         className="c-button smug secondary--bare bare--hover !h-10 mobile-secondary"
@@ -246,7 +246,7 @@ function Header() {
                         animate={{
                           opacity: 1,
                           duration: 0.2,
-                          transition: { delay: (menuItems.length + 1) * 0.06 },
+                          transition: { delay: (menuItems.length + 1) * 0.03 },
                         }}
                         transition={{ type: "spring", bounce: 0 }}
                         className="c-button primary--foreground smug c-button__foreground !h-10"
