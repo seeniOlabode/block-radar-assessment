@@ -19,7 +19,6 @@ const LARGE_SIZE = 1024;
 
 function Header() {
   const [headerOpen, setHeaderOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState(null);
 
   const [ref, bounds] = useMeasure();
   let currentListener;
@@ -55,13 +54,10 @@ function Header() {
               <img src={Logo} alt="Blockradar Logo" />
             </a>
 
-            <nav className="c-nav" onMouseLeave={() => setActiveTab(null)}>
+            <nav className="c-nav">
               {menuItems.map((item, i) => {
                 return (
                   <a
-                    onFocus={() => setActiveTab(i)}
-                    onMouseOver={() => setActiveTab(i)}
-                    onMouseLeave={() => setActiveTab(i)}
                     className="c-link"
                     href={`javascript:void(0)`}
                     key={item.name}
