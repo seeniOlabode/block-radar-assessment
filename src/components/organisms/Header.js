@@ -124,16 +124,16 @@ function Header() {
         <AnimatePresence>
           <motion.header
             animate={{
-              height: bounds.height && headerOpen ? bounds.height + 4 : 52,
+              height: bounds.height && headerOpen ? bounds.height : 54,
             }}
             transition={{
-              duration: headerOpen ? 0.4 : 0.2,
-              ease: [0.215, 0.61, 0.355, 1],
+              duration: headerOpen ? 0.4 : 0.3,
+              ease: headerOpen ? [0.77, 0, 0.175, 1] : [0.42, 0, 0.58, 1],
             }}
             className="c-header c-header__mobile my-3 fixed top-0 left-0 right-0 lg:hidden overflow-hidden max-w-md mx-auto"
           >
-            <div ref={ref} className="px-4 pl-5">
-              <div className="mobile-top flex items-center justify-between w-full">
+            <div ref={ref}>
+              <div className="mobile-top flex items-center justify-between w-full px-4 pl-5">
                 <a
                   className="logo h-10 w-fit flex items-center"
                   href="javascript:void(0)"
@@ -143,7 +143,7 @@ function Header() {
 
                 <button
                   onClick={toggleHeaderOpen}
-                  className="c-header__button h-10 w-10 flex items-center justify-center translate-x-2 "
+                  className="c-header__button h-10 w-10 flex items-center justify-center translate-x-2 active:scale-95 transition-transform"
                 >
                   <svg
                     style={{ display: headerOpen ? null : "none" }}
@@ -182,7 +182,7 @@ function Header() {
 
               <AnimatePresence>
                 {headerOpen ? (
-                  <div className="mobile-header-content mt-3 flex flex-col justify-between pb-5">
+                  <div className="mobile-header-content mt-3 flex flex-col justify-between p-5 pt-0">
                     <nav className="flex flex-col">
                       {menuItems.map((item, i, array) => {
                         return (
@@ -192,7 +192,7 @@ function Header() {
                             animate={{
                               opacity: 1,
                               duration: 0.2,
-                              transition: { delay: i * 0.08 },
+                              transition: { delay: (i + 1) * 0.07 },
                             }}
                             exit={{
                               opacity: 0,
@@ -226,44 +226,27 @@ function Header() {
                         );
                       })}
                     </nav>
-                    <div className="flex flex-col gap-1 mt-10">
-                      <motion.button
-                        initial={{ opacity: 0 }}
-                        animate={{
-                          opacity: 1,
-                          transition: {
-                            type: "tween",
-                            duration: 0.45,
-                            delay: menuItems.length * 0.05,
-                            ease: [0.23, 1, 0.32, 1],
-                          },
-                        }}
-                        exit={{
-                          opacity: 0,
-                          transition: { duration: 0.05 },
-                        }}
-                        className="c-button smug secondary--bare bare--hover !h-10 mobile-secondary"
-                      >
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: {
+                          type: "tween",
+                          duration: 0.45,
+                          delay: menuItems.length * 0.08,
+                          ease: [0.23, 1, 0.32, 1],
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.05 },
+                      }}
+                      className="flex flex-col gap-1 mt-10"
+                    >
+                      <button className="c-button smug secondary--bare bare--hover !h-10 mobile-secondary">
                         Log in
-                      </motion.button>
-                      <motion.button
-                        initial={{ opacity: 0 }}
-                        animate={{
-                          opacity: 1,
-                          transition: {
-                            type: "tween",
-                            duration: 0.45,
-                            delay: menuItems.length * 0.06,
-                            ease: [0.23, 1, 0.32, 1],
-                          },
-                        }}
-                        exit={{
-                          y: 20,
-                          opacity: 0,
-                          transition: { duration: 0.05 },
-                        }}
-                        className="c-button primary--foreground smug c-button__foreground !h-10"
-                      >
+                      </button>
+                      <button className="c-button primary--foreground smug c-button__foreground !h-10">
                         Sign up
                         <svg
                           width="24"
@@ -280,8 +263,8 @@ function Header() {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </motion.button>
-                    </div>
+                      </button>
+                    </motion.div>
                   </div>
                 ) : null}
               </AnimatePresence>
